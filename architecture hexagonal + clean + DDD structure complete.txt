@@ -37,7 +37,7 @@ src/main/java/com/example/<application-name>
 │       └── event                               # Application Events (pub/sub interne)
 │           # → Ex : UserCreatedEvent, handlers applicatifs
 
-├── infrastructure                             # Adaptateurs (Hexagonal)
+├── infrastructure                             # Adaptateurs (Hexagonal) / Java module ou module Maven
 │   # → Connecte le monde externe → application/domain
 │   # → Implémentent les ports OUT
 │
@@ -66,7 +66,7 @@ src/main/java/com/example/<application-name>
 │               ├── dto                         # DTO pour les systèmes externes
 │               └── adapter                     # Implémentation ports OUT (systèmes externes)
 
-└── config                                      # Config technique transversale
+├── config                                      # Config technique transversale
     # → Injection beans, sécurité, sérialisation, logging
     # → Aucun métier ici
     │
@@ -75,6 +75,8 @@ src/main/java/com/example/<application-name>
     ├── persistence                             # Datasource, Hibernate, Liquibase/Flyway
     ├── observability                           # Micrometer, Otel, Tempo, Prometheus, Grafana
     └── common                                  # Logging, tracing, Jackson modules
+
+└── bootstrap                                   # Démarrage des use cases, Wiring avancé
 
 
 
