@@ -47,7 +47,6 @@ src/main/java/com/example/<application-name>
 │   │           └── v1                          # Versioning API
 │   │               ├── controller              # Exposition REST
 │   │               ├── dto                     # DTO publics
-                    ├── jpaAdapter                     # DTO publics
 │   │               └── mapper                  # Mapping API <-> domain (API mapper)
 │   │
 │   └── out                                     # Adaptateurs sortants
@@ -75,6 +74,7 @@ src/main/java/com/example/<application-name>
     ├── persistence                             # Datasource, Hibernate, Liquibase/Flyway
 
     └── common                                  # Logging, tracing, Jackson modules
+
 
 
 
