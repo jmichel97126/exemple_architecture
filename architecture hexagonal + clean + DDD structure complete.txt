@@ -39,6 +39,7 @@ src/main/java/com/example/<application-name>
 
 ├── adapter                                     # Adaptateurs (Hexagonal)
 │   # → Connecte le monde externe → application/domain
+│   # → Implémentent les ports OUT
 │
 │   ├── in                                      # Adaptateurs entrants
 │   │   └── web
@@ -46,6 +47,7 @@ src/main/java/com/example/<application-name>
 │   │           └── v1                          # Versioning API
 │   │               ├── controller              # Exposition REST
 │   │               ├── dto                     # DTO publics
+                    ├── jpaAdapter                     # DTO publics
 │   │               └── mapper                  # Mapping API <-> domain (API mapper)
 │   │
 │   └── out                                     # Adaptateurs sortants
@@ -54,6 +56,9 @@ src/main/java/com/example/<application-name>
 │       │       ├── entity                      # Modèle JPA (persistance)
 │       │       ├── repository                  # Spring Data repositories
 │       │       └── mapper                      # Mapping domain <-> JPA (JPA mapper)
+│       │       └── jpaAdapter                     # Implémentations des ports OUT (DB)
+│       │           # → Orchestration des repositories
+│       │           # → Gestion exceptions techniques → erreurs métier
 │       │
 │       └── system                               # Intégrations externes (HTTP, MQ…)
 │           └── <integration>                   
@@ -69,3 +74,4 @@ src/main/java/com/example/<application-name>
     ├── persistence                             # Datasource, Hibernate, Liquibase/Flyway
 
     └── common                                  # Logging, tracing, Jackson modules
+
