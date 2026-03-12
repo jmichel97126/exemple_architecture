@@ -1,0 +1,70 @@
+src/main/java/com/example/<application-name>
+├── shared                                      # Utilitaires transversaux (sans métier)
+│   # → Jamais de dépendance vers domain
+│   # → Horloge, helpers, pagination, erreurs génériques
+│   │
+│   ├── clock                                   # Par ex. ClockProvider (testable)
+│   ├── exception                               # Erreurs techniques : GlobalError, ErrorCode
+│   ├── mapper                                  # Mappers génériques (si besoin)
+│   └── util                                    # Utils (string, collections, ids…)
+
+├── domain                                      # Domaine = cœur métier
+│   # → Couche pure, sans dépendance technique
+│   # → Ubiquitous Language, invariants métier
+│
+│   └── <module>                                # Sous-domaine / bounded context
+│       ├── model                               # Entities, VOs, Aggregates, Domain Events
+│       │   # → Logique métier pure
+│       │
+│       ├── service                             # Domain Services (stateless, métier)
+│       │
+│       ├── port                                # Hexagonal ports
+│       │   ├── in                              # Ports IN = Use Cases (interfaces)
+│       │   └── out                             # Ports OUT = Repos / systèmes externes
+│       │
+│       └── exception                           # Exceptions métier
+│           # → Par ex. BusinessRuleViolation, NotFoundException, etc.
+
+├── application                                 # Couche applicative (Clean Architecture)
+│   # → Implémente ports IN
+│   # → Orchestration / transaction / validation
+│   # → Pas de logique métier profonde
+│
+│   └── <module>
+│       ├── usecase                             # Implémentations des ports IN
+│       │   # → Orchestration, appel ports OUT
+│       │
+│       └── event                               # Application Events (pub/sub interne)
+│           # → Ex : UserCreatedEvent, handlers applicatifs
+
+├── adapter                                     # Adaptateurs (Hexagonal)
+│   # → Connecte le monde externe → application/domain
+│
+│   ├── in                                      # Adaptateurs entrants
+│   │   └── web
+│   │       └── <module>
+│   │           └── v1                          # Versioning API
+│   │               ├── controller              # Exposition REST
+│   │               ├── dto                     # DTO publics
+│   │               └── mapper                  # Mapping API <-> domain (API mapper)
+│   │
+│   └── out                                     # Adaptateurs sortants
+│       ├── persistence                          # Accès DB
+│       │   └── <module>
+│       │       ├── entity                      # Modèle JPA (persistance)
+│       │       ├── repository                  # Spring Data repositories
+│       │       └── mapper                      # Mapping domain <-> JPA (JPA mapper)
+│       │
+│       └── system                               # Intégrations externes (HTTP, MQ…)
+│           └── <integration>                   
+│               ├── client                      # Clients HTTP/Kafka/etc.
+│               └── adapter                     # Implémentation ports OUT (systèmes externes)
+
+└── config                                      # Config technique transversale
+    # → Injection beans, sécurité, sérialisation, logging
+    # → Aucun métier ici
+    │
+    ├── web                                     # ExceptionHandler, CORS, WebMvcConfig
+    ├── security                                # AuthN/AuthZ (Spring Security)
+    ├── persistence                             # Datasource, Hibernate, Liquibase/Flyway
+    └── common                                  # Logging, tracing, Jackson modules
