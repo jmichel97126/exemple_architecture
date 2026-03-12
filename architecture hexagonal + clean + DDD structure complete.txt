@@ -56,7 +56,8 @@ src/main/java/com/example/<application-name>
 │       │       ├── entity                      # Modèle JPA (persistance)
 │       │       ├── repository                  # Spring Data repositories
 │       │       └── mapper                      # Mapping domain <-> JPA (JPA mapper)
-│       │       └── jpaAdapter                     # Implémentations des ports OUT (DB)
+│       │       └── jpaAdapter                     
+│       │           # Implémentations des ports OUT (DB)
 │       │           # → Orchestration des repositories
 │       │           # → Gestion exceptions techniques → erreurs métier
 │       │
@@ -74,5 +75,6 @@ src/main/java/com/example/<application-name>
     ├── persistence                             # Datasource, Hibernate, Liquibase/Flyway
 
     └── common                                  # Logging, tracing, Jackson modules
+
 
 
