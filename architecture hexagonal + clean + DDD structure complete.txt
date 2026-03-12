@@ -62,7 +62,7 @@ src/main/java/com/example/<application-name>
 │       │
 │       └── system                               # Intégrations externes (HTTP, AI, MQ…)
 │           └── <integration>                    # Protocole ou fournisseur
-│               ├── gateway                      # Clients HTTP/AIProvider/MCP/Kafka/etc.
+│               ├── gateway                      # Clients HTTP / AIProvider / MCP / Kafka /etc.
 │               ├── dto                          # DTO pour les systèmes externes
 │               └── adapter                      # Implémentation ports OUT (systèmes externes)
 
@@ -77,6 +77,7 @@ src/main/java/com/example/<application-name>
     └── common                                   # Logging, tracing, Jackson modules
 
 └── bootstrap                                    # Démarrage des use cases, Wiring avancé
+
 
 
 
