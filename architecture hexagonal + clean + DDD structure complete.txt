@@ -62,7 +62,7 @@ src/main/java/com/example/<application-name>
 │       │
 │       └── system                               # Intégrations externes (HTTP, MQ…)
 │           └── <integration>                   
-│               ├── client                      # Clients HTTP/Kafka/etc.
+│               ├── client                      # Clients HTTP/AIProvider/MCP/Kafka/etc.
 │               └── adapter                     # Implémentation ports OUT (systèmes externes)
 
 └── config                                      # Config technique transversale
@@ -73,10 +73,5 @@ src/main/java/com/example/<application-name>
     ├── security                                # AuthN/AuthZ (Spring Security)
     ├── persistence                             # Datasource, Hibernate, Liquibase/Flyway
     └── common                                  # Logging, tracing, Jackson modules
-
-
-
-
-
 
 
