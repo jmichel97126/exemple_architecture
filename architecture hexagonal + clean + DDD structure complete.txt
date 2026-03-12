@@ -72,6 +72,8 @@ src/main/java/com/example/<application-name>
     ├── web                                     # ExceptionHandler, CORS, WebMvcConfig
     ├── security                                # AuthN/AuthZ (Spring Security)
     ├── persistence                             # Datasource, Hibernate, Liquibase/Flyway
+    ├── observability                           # Micrometer, Otel, Tempo, Prometheus, Grafana
     └── common                                  # Logging, tracing, Jackson modules
+
 
 
