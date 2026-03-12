@@ -50,7 +50,7 @@ src/main/java/com/example/<application-name>
 │   │               └── mapper                  # Mapping API <-> domain (API mapper)
 │   │
 │   └── out                                     # Adaptateurs sortants
-│       ├── persistence                          # Accès DB
+│       ├── persistence                         # Accès DB
 │       │   └── <module>
 │       │       ├── entity                      # Modèle JPA (persistance)
 │       │       ├── repository                  # Spring Data repositories
@@ -60,23 +60,24 @@ src/main/java/com/example/<application-name>
 │       │           # → Orchestration des repositories
 │       │           # → Gestion exceptions techniques → erreurs métier
 │       │
-│       └── system                               # Intégrations externes (HTTP, MQ…)
-│           └── <integration>                   
-│               ├── client                      # Clients HTTP/AIProvider/MCP/Kafka/etc.
-│               ├── dto                         # DTO pour les systèmes externes
-│               └── adapter                     # Implémentation ports OUT (systèmes externes)
+│       └── system                               # Intégrations externes (HTTP, AI, MQ…)
+│           └── <integration>                    # Protocole ou fournisseur
+│               ├── gateway                      # Clients HTTP/AIProvider/MCP/Kafka/etc.
+│               ├── dto                          # DTO pour les systèmes externes
+│               └── adapter                      # Implémentation ports OUT (systèmes externes)
 
-├── config                                      # Config technique transversale
+├── config                                       # Config technique transversale
     # → Injection beans, sécurité, sérialisation, logging
     # → Aucun métier ici
     │
-    ├── web                                     # ExceptionHandler, CORS, WebMvcConfig
-    ├── security                                # AuthN/AuthZ (Spring Security)
-    ├── persistence                             # Datasource, Hibernate, Liquibase/Flyway
-    ├── observability                           # Micrometer, Otel, Tempo, Prometheus, Grafana
-    └── common                                  # Logging, tracing, Jackson modules
+    ├── web                                      # ExceptionHandler, CORS, WebMvcConfig
+    ├── security                                 # AuthN/AuthZ (Spring Security)
+    ├── persistence                              # Datasource, Hibernate, Liquibase/Flyway
+    ├── observability                            # Micrometer, Otel, Tempo, Prometheus, Grafana
+    └── common                                   # Logging, tracing, Jackson modules
 
-└── bootstrap                                   # Démarrage des use cases, Wiring avancé
+└── bootstrap                                    # Démarrage des use cases, Wiring avancé
+
 
 
 
