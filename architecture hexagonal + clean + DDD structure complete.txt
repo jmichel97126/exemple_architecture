@@ -8,7 +8,7 @@ src/main/java/com/example/<application-name>
 │   ├── mapper                                  # Mappers génériques (si besoin)
 │   └── util                                    # Utils (string, collections, ids…)
 
-├── domain                                      # Domaine = cœur métier (DDD)
+├── domain                                      # Domaine = cœur métier (DDD) / Durable, stable
 │   # → Couche pure, sans dépendance technique
 │   # → Ubiquitous Language, invariants métier
 │
@@ -25,7 +25,7 @@ src/main/java/com/example/<application-name>
 │       └── exception                           # Exceptions métier
 │           # → Par ex. BusinessRuleViolation, NotFoundException, etc.
 
-├── application                                 # Couche applicative (Clean Architecture)
+├── application                                 # Couche applicative (Clean Architecture) / Pilotage
 │   # → Implémente ports IN
 │   # → Orchestration / transaction / validation
 │   # → Pas de logique métier profonde
@@ -37,7 +37,7 @@ src/main/java/com/example/<application-name>
 │       └── event                               # Application Events (pub/sub interne)
 │           # → Ex : UserCreatedEvent, handlers applicatifs
 
-├── infrastructure                             # Adaptateurs (Hexagonal) / Java module ou module Maven
+├── infrastructure                             # Adaptateurs (Hexagonal) / Java module ou module Maven / Jetable / Remplaçable
 │   # → Connecte le monde externe → application/domain
 │   # → Implémentent les ports OUT
 │
@@ -78,6 +78,7 @@ src/main/java/com/example/<application-name>
     └── common                                   # Logging, tracing, Jackson modules
 
 └── bootstrap                                    # Démarrage des use cases, Wiring avancé
+
 
 
 
