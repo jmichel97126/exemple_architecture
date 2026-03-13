@@ -45,7 +45,8 @@ src/main/java/com/example/<application-name>
 │   │   └── web
 │   │       └── <module>
 │   │           └── v1                          # Versioning API
-│   │               ├── controller              # Exposition REST
+│   │               ├── controller              # Exposition REST 
+│   │                   # -> Appelle port IN → usecase
 │   │               ├── dto                     # DTO publics
 │   │               └── mapper                  # Mapping API <-> domain (API mapper)
 │   │
@@ -77,6 +78,7 @@ src/main/java/com/example/<application-name>
     └── common                                   # Logging, tracing, Jackson modules
 
 └── bootstrap                                    # Démarrage des use cases, Wiring avancé
+
 
 
 
