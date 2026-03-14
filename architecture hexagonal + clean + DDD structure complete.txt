@@ -34,6 +34,16 @@ src/main/java/com/example/<application-name>
 │       ├── usecase                             # Implémentations des ports IN
 │       │   # → Orchestration, appel ports OUT
 │       │
+│       │   ├── command                         # Command Use Cases (écriture)
+│       │   │   # → Mutations : create/update/delete
+│       │   │   # → Toujours transactionnels
+│       │   │   # → Appellent ports OUT pour persister
+│       │
+│       │   └── query                           # Query Use Cases (lecture)
+│       │       # → Lecture pure, sans effets de bord
+│       │       # → Pas de transaction (sauf besoin technique)
+│       │       # → Optimisés pour la consultation
+│       │
 │       └── event                               # Application Events (pub/sub interne)
 │           # → Ex : UserCreatedEvent, handlers applicatifs
 
