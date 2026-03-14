@@ -37,7 +37,7 @@ src/main/java/com/example/<application-name>
 │       │   ├── command                         # Command Use Cases (écriture)
 │       │   └── query                           # Query Use Cases (lecture)
 │       │
-│       ├── mapper                          # Mapping API <-> domain (API mapper)
+│       ├── mapper                              # Mapping DomainEvent <-> ApplicationEvent
 │       └── event                               # Application Events (pub/sub interne)
 │           # → Ex : UserCreatedEvent, handlers applicatifs
 
