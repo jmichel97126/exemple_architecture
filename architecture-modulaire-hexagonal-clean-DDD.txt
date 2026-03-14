@@ -1,0 +1,78 @@
+src/main/java/com/example/<application-name>
+├── modules                                      # Modules = bounded contexts autonomes
+│   # → Chaque module contient son propre domaine, application, infrastructure
+│   # → Isolation forte : aucun module ne dépend d’un autre directement
+│   # → Migration microservices possible sans refactor du domaine
+│   │
+│   └── <module-name>                            # Exemple : user, billing, catalog…
+│       ├── domain                               # Couche métier pure (DDD)
+│       │   # → Aucun import Spring / technique
+│       │   # → Ubiquitous Language, invariants, règles métier
+│       │
+│       │   ├── model                            # Entities, Value Objects, Aggregates
+│       │   ├── policy                           # Règles métier atomiques
+│       │   ├── service                          # Domain Services (stateless)
+│       │   ├── event                            # Domain Events (purs)
+│       │   └── port                             # Ports hexagonaux
+│       │       ├── in                           # Ports IN = Use Cases (interfaces)
+│       │       └── out                          # Ports OUT = Repos / systèmes externes
+│       │
+│       ├── application                          # Couche applicative (Clean Architecture)
+│       │   # → Implémente ports IN
+│       │   # → Orchestration, transactions, validation
+│       │   # → Pas de logique métier profonde
+│       │
+│       │   ├── command                          # Use Cases écriture
+│       │   ├── query                            # Use Cases lecture
+│       │   ├── mapper                           # Mapping DomainEvent <-> ApplicationEvent
+│       │   └── event                            # Application Events (handlers internes)
+│       │
+│       ├── infrastructure                       # Adaptateurs (Hexagonal)
+│       │   # → Connecte le module au monde externe
+│       │   # → Implémente ports OUT
+│       │
+│       │   ├── web                              # Adaptateurs entrants (REST)
+│       │   │   ├── controller                   # Exposition API
+│       │   │   ├── dto                          # DTO publics
+│       │   │   └── mapper                       # Mapping API <-> domain
+│       │   │
+│       │   ├── persistence                      # Accès DB (JPA, JDBC…)
+│       │   │   ├── entity                       # Modèle persistance
+│       │   │   ├── repository                   # Spring Data repositories
+│       │   │   ├── mapper                       # Mapping domain <-> JPA
+│       │   │   └── adapter                      # Implémentation ports OUT (DB)
+│       │   │       # → Orchestration des repos
+│       │   │       # → Gestion exceptions techniques → erreurs métier
+│       │   │
+│       │   └── system                           # Intégrations externes (HTTP, MQ, AI…)
+│       │       ├── gateway                      # Clients HTTP / Kafka / AIProvider
+│       │       ├── dto                          # DTO externes
+│       │       └── adapter                      # Implémentation ports OUT (systèmes externes)
+│       │
+│       └── config                               # Config spécifique au module
+│           # → Beans module-scoped
+│           # → Pas de logique métier
+│
+├── shared                                       # Code transverse (sans métier)
+│   # → Jamais de dépendance vers domain
+│   # → Utilitaires génériques
+│   │
+│   ├── clock                                    # Horloge testable
+│   ├── exception                                # Erreurs techniques génériques
+│   ├── util                                     # Utils (string, ids, collections…)
+│   ├── mapper                                   # Mappers génériques
+│   └── event                                    # Événements transverses
+│
+├── platform                                     # Config technique globale
+│   # → Pas de métier ici
+│   │
+│   ├── web                                      # ExceptionHandler, CORS, WebMvcConfig
+│   ├── security                                 # AuthN/AuthZ
+│   ├── persistence                              # Datasource, Hibernate, Flyway/Liquibase
+│   ├── observability                            # Micrometer, Otel, Tempo, Prometheus
+│   └── common                                   # Logging, tracing, Jackson modules
+│
+└── bootstrap                                    # Composition Root
+    # → Assemblage des modules
+    # → Wiring avancé
+    # → Initialisation des use cases
