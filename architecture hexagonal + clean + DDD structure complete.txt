@@ -8,7 +8,7 @@ src/main/java/com/example/<application-name>
 │   ├── mapper                                  # Mappers génériques (si besoin)
 │   └── util                                    # Utils (string, collections, ids…)
 
-├── domain                                      # Domaine = cœur métier (DDD) / Durable, stable
+├── domain                                      # Domaine = cœur métier (DDD)
 │   # → Couche pure, sans dépendance technique
 │   # → Ubiquitous Language, invariants métier
 │
