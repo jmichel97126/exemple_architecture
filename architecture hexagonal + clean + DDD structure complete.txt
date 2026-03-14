@@ -37,7 +37,7 @@ src/main/java/com/example/<application-name>
 │       └── event                               # Application Events (pub/sub interne)
 │           # → Ex : UserCreatedEvent, handlers applicatifs
 
-├── infrastructure                             # Adaptateurs (Hexagonal) / Java module ou module Maven / Jetable / Remplaçable
+├── infrastructure                             # Adaptateurs (Hexagonal) / Java module ou module Maven
 │   # → Connecte le monde externe → application/domain
 │   # → Implémentent les ports OUT
 │
