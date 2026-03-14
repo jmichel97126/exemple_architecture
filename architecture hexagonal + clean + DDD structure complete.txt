@@ -25,7 +25,7 @@ src/main/java/com/example/<application-name>
 │       └── exception                           # Exceptions métier
 │           # → Par ex. BusinessRuleViolation, NotFoundException, etc.
 
-├── application                                 # Couche applicative (Clean Architecture) / Pilotage
+├── application                                 # Couche applicative (Clean Architecture)
 │   # → Implémente ports IN
 │   # → Orchestration / transaction / validation
 │   # → Pas de logique métier profonde
