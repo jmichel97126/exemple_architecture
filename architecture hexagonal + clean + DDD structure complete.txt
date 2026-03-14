@@ -13,7 +13,7 @@ src/main/java/com/example/<application-name>
 │   # → Ubiquitous Language, invariants métier
 │
 │   └── <module>                                # Sous-domaine / bounded context
-│       ├── model                               # Entities, VOs, Aggregates, Domain Events
+│       ├── model                               # Entities, VOs, Aggregates, Domain Events, Factory
 │       │   # → Logique métier pure
 │       │
 │       ├── service                             # Domain Services (stateless, métier)
@@ -55,7 +55,8 @@ src/main/java/com/example/<application-name>
 │       │   └── <module>
 │       │       ├── entity                      # Modèle JPA (persistance)
 │       │       ├── repository                  # Spring Data repositories
-│       │       └── mapper                      # Mapping domain <-> JPA (JPA mapper)
+│       │       ├── mapper                      # Mapping domain <-> JPA (JPA mapper)
+│       │       ├── specification               # JPA Spécification
 │       │       └── jpaAdapter                     
 │       │           # Implémentations des ports OUT (DB)
 │       │           # → Orchestration des repositories
